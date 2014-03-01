@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="Spin The Phone" package="com.flatmap.spinthephone" version="1.0.0" company="Flat Cap" />
+	<app main="Main" path="Export" file="WibblWobbl" />
+
+	<window width="480" height="800" unless="mobile"/>
+
+	<source path="Source" />
+	
+	<haxelib name="openfl" />
+	<haxelib name="actuate" />
+
+	<assets path="Assets" rename="assets" exclude="openfl.svg" />
+	<icon path="Assets/openfl.svg" />
+	
+</project>
