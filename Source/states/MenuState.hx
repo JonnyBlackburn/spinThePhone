@@ -1,40 +1,53 @@
 package states;
 
+import flash.display.Bitmap;
 import states.stateManager.transitions.TransitionHelper.Transitions;
+import states.stateManager.transitions.TransitionHelper;
 import states.stateManager.transitions.SlideTransitions;
 import states.stateManager.StateManager;
 import states.stateManager.State;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.display.Sprite;
+import openfl.Assets;
 
 class MenuState extends State {
 
 	public static var STATE_KEY:String = "MenuState";
 
-	private var menuCircle:Sprite;
+	private var transitionHelper:TransitionHelper;
+
+	private var menuContainer:Sprite;
+	private var menuImage:Bitmap;
 
     public function new():Void {
 
 	    super();
 
+	    transitionHelper = TransitionHelper.getInstance();
+
 	    trace("Menu State");
     }
 
 	override public function load():Void {
-		menuCircle = new Sprite();
-		menuCircle.graphics.beginFill(0x00FF00);
-		menuCircle.graphics.drawCircle(100, 100, 10);
-		addChild(menuCircle);
+
+		menuContainer = new Sprite();
+		menuImage = new Bitmap(Assets.getBitmapData("assets/mainMenu/label.png", true));
+
+		menuContainer.x = (Main.stageWidth / 2) - (menuImage.width / 2);
+		menuContainer.y = (Main.stageHeight / 2) - (menuImage.height / 2);
+
+		menuContainer.addChild(menuImage);
+		addChild(menuContainer);
 	}
 
 	override public function onEntered():Void {
-		menuCircle.addEventListener(MouseEvent.CLICK, onClicked);
+		menuContainer.addEventListener(MouseEvent.CLICK, onClicked);
 	}
 
 	private function onClicked(e:MouseEvent):Void {
-		menuCircle.removeEventListener(MouseEvent.CLICK, onClicked);
-		StateManager.getInstance().changeStateTransition(GameState.STATE_KEY, Transitions.SLIDE_PUSH_LEFT);
+		menuContainer.removeEventListener(MouseEvent.CLICK, onClicked);
+		StateManager.getInstance().changeStateTransition(GameState.STATE_KEY, transitionHelper.getRandomTransition());
 	}
 
 	override public function update(dt:Int):Void {

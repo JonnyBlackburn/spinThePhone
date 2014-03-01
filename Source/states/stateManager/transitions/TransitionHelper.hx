@@ -44,7 +44,7 @@ class TransitionHelper {
 	    transitions.set(Transitions.SLIDE_DOWN, SlideTransitions.slideDown);
     }
 
-	public function getRandomTransition() : Function {
+	public function getRandomTransition() : Transitions {
 		var rand:Int = Math.floor(Math.random() * (Lambda.count(transitions)));
 
 		var i:Int = 0;
@@ -56,7 +56,7 @@ class TransitionHelper {
 			i++;
 		}
 
-		return transitions.get(chosenKey);
+		return chosenKey;
 	}
 
 	public function getTransition(transitionKey:Transitions) : Function {

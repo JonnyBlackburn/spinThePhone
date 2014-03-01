@@ -11,9 +11,13 @@ class GameState extends State {
 	public static var STATE_KEY:String = "GameState";
 
 	private var gameCircle:Sprite;
+	private var transitionHelper:TransitionHelper;
+
 
     public function new() {
 	    super();
+
+	    transitionHelper = TransitionHelper.getInstance();
 
 	    trace("Game state");
     }
@@ -31,7 +35,7 @@ class GameState extends State {
 
 	private function onClicked(e:MouseEvent):Void {
 		gameCircle.removeEventListener(MouseEvent.CLICK, onClicked);
-		StateManager.getInstance().changeStateTransition(MenuState.STATE_KEY, Transitions.SLIDE_PUSH_LEFT);
+		StateManager.getInstance().changeStateTransition(MenuState.STATE_KEY, transitionHelper.getRandomTransition());
 	}
 
 	override public function update(dt:Int):Void {

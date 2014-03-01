@@ -1,6 +1,7 @@
 package;
 
 
+import flash.display.Bitmap;
 import states.GameState;
 import states.MenuState;
 import states.stateManager.StateManager;
@@ -8,6 +9,7 @@ import states.stateManager.State;
 import flash.Lib;
 import flash.events.Event;
 import flash.display.Sprite;
+import openfl.Assets;
 
 class Main extends Sprite {
 
@@ -20,12 +22,17 @@ class Main extends Sprite {
 	public static var stageWidth:Int;
 	public static var stageHeight:Int;
 
+	private var backgroundImage:Bitmap;
+
 	public function new():Void {
 		
 		super ();
 
 		stageWidth = Lib.current.stage.stageWidth;
 		stageHeight = Lib.current.stage.stageHeight;
+
+		backgroundImage = new Bitmap(Assets.getBitmapData("assets/background.jpg", false));
+		addChild(backgroundImage);
 
 		stateManager = StateManager.getInstance();
 		stateManager.addState(MenuState.STATE_KEY, new MenuState());
