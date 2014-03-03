@@ -15,16 +15,12 @@ class MenuState extends State {
 
 	public static var STATE_KEY:String = "MenuState";
 
-	private var transitionHelper:TransitionHelper;
-
 	private var menuContainer:Sprite;
 	private var menuImage:Bitmap;
 
     public function new():Void {
 
 	    super();
-
-	    transitionHelper = TransitionHelper.getInstance();
 
 	    trace("Menu State");
     }
@@ -47,7 +43,7 @@ class MenuState extends State {
 
 	private function onClicked(e:MouseEvent):Void {
 		menuContainer.removeEventListener(MouseEvent.CLICK, onClicked);
-		StateManager.getInstance().changeStateTransition(GameState.STATE_KEY, transitionHelper.getRandomTransition());
+		StateManager.getInstance().changeStateTransition(GameState.STATE_KEY, Transitions.RANDOM);
 	}
 
 	override public function update(dt:Int):Void {

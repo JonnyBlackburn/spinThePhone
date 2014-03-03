@@ -86,7 +86,15 @@ class StateManager extends Sprite {
 
 		isTransitioning = true;
 
-		var transition:Function = transitionHelper.getTransition(transitionKey);
+		var transition:Function;
+
+		if(transitionKey == Transitions.RANDOM) {
+			transition = transitionHelper.getRandomTransition();
+		} else {
+			transition = transitionHelper.getTransition(transitionKey);
+		}
+
+
 
 		transition(currentState, nextState, endTransition);
 	}

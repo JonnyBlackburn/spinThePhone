@@ -15,6 +15,7 @@ enum Transitions {
 	SLIDE_RIGHT;
 	SLIDE_UP;
 	SLIDE_DOWN;
+	RANDOM;
 }
 
 class TransitionHelper {
@@ -44,7 +45,7 @@ class TransitionHelper {
 	    transitions.set(Transitions.SLIDE_DOWN, SlideTransitions.slideDown);
     }
 
-	public function getRandomTransition() : Transitions {
+	public function getRandomTransition() : Function {
 		var rand:Int = Math.floor(Math.random() * (Lambda.count(transitions)));
 
 		var i:Int = 0;
@@ -56,7 +57,7 @@ class TransitionHelper {
 			i++;
 		}
 
-		return chosenKey;
+		return getTransition(chosenKey);
 	}
 
 	public function getTransition(transitionKey:Transitions) : Function {
