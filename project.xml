@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 	
-	<meta title="Spin The Phone" package="com.flatmap.spinthephone" version="1.0.0" company="Flat Cap" />
-	<app main="Main" path="Export" file="WibblWobbl" />
+	<meta title="Spin The Phone" package="com.flatcap.spinthephone" version="1.0.0" company="Flat Cap" />
+	<app main="Main" path="Export" file="SpinThePhone" />
 
 	<window width="480" height="800" unless="mobile"/>
 

@@ -28,13 +28,14 @@ class MenuState extends State {
 	override public function load():Void {
 
 		menuContainer = new Sprite();
-		menuImage = new Bitmap(Assets.getBitmapData("assets/mainMenu/label.png", true));
+		addChild(menuContainer);
 
-		menuContainer.x = (Main.stageWidth / 2) - (menuImage.width / 2);
-		menuContainer.y = (Main.stageHeight / 2) - (menuImage.height / 2);
+		menuImage = new Bitmap(Assets.getBitmapData("assets/mainMenu/label.png", true));
+		//Center the image on the stage
+		menuImage.x = (Main.stageWidth / 2) - (menuImage.width / 2);
+		menuImage.y = (Main.stageHeight / 2) - (menuImage.height / 2);
 
 		menuContainer.addChild(menuImage);
-		addChild(menuContainer);
 	}
 
 	override public function onEntered():Void {
@@ -43,7 +44,7 @@ class MenuState extends State {
 
 	private function onClicked(e:MouseEvent):Void {
 		menuContainer.removeEventListener(MouseEvent.CLICK, onClicked);
-		StateManager.getInstance().changeStateTransition(GameState.STATE_KEY, Transitions.RANDOM);
+		StateManager.getInstance().changeStateTransition(GameState.STATE_KEY, Transitions.SLIDE_PUSH_LEFT);
 	}
 
 	override public function update(dt:Int):Void {

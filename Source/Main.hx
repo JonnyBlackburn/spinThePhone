@@ -1,6 +1,7 @@
 package;
 
 
+import states.DareState;
 import flash.display.Bitmap;
 import states.GameState;
 import states.MenuState;
@@ -37,6 +38,9 @@ class Main extends Sprite {
 		stateManager = StateManager.getInstance();
 		stateManager.addState(MenuState.STATE_KEY, new MenuState());
 		stateManager.addState(GameState.STATE_KEY, new GameState());
+		stateManager.addState(DareState.STATE_KEY, new DareState());
+
+		//Start on the MenuState
 		stateManager.changeState(MenuState.STATE_KEY);
 
 		addChild(stateManager);
