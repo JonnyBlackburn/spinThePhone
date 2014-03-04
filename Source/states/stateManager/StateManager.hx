@@ -81,6 +81,10 @@ class StateManager extends Sprite {
 
 			nextState.onEnterFinish();
 			currentState.onExitFinish();
+
+			//Enable the mouse on both states
+			currentState.mouseChildren = true;
+			nextState.mouseChildren = true;
 			isTransitioning = false;
 		}
 
@@ -95,6 +99,9 @@ class StateManager extends Sprite {
 		}
 
 
+		//Disable the mouse on both states
+		currentState.mouseChildren = false;
+		nextState.mouseChildren = false;
 
 		transition(currentState, nextState, endTransition);
 	}

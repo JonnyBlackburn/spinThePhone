@@ -20,11 +20,11 @@ class Main extends Sprite {
 
 	public static var stateManager:StateManager;
 
-	public static var stageWidth:Int;
-	public static var stageHeight:Int;
+	public static var actualStageWidth:Int;
+	public static var actualStageHeight:Int;
 
-	public static var baseWidth:Int = 480;
-	public static var baseHeight:Int = 800;
+	public static var stageWidth:Int = 480;
+	public static var stageHeight:Int = 800;
 
 	private var backgroundImage:Bitmap;
 
@@ -32,11 +32,11 @@ class Main extends Sprite {
 		
 		super ();
 
-		stageWidth = Lib.current.stage.stageWidth;
-		stageHeight = Lib.current.stage.stageHeight;
+		actualStageWidth = Lib.current.stage.stageWidth;
+		actualStageHeight = Lib.current.stage.stageHeight;
 
-		scaleX = (stageWidth / baseWidth);
-		scaleY = (stageHeight / baseHeight);
+		scaleX = (actualStageWidth / stageWidth);
+		scaleY = (actualStageHeight / stageHeight);
 
 		backgroundImage = new Bitmap(Assets.getBitmapData("assets/background.jpg", false));
 		addChild(backgroundImage);

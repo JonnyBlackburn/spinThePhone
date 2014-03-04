@@ -1,5 +1,6 @@
 package states;
 
+import primitives.Button;
 import flash.text.TextFormatAlign;
 import flash.text.TextFormat;
 import flash.text.TextField;
@@ -16,11 +17,9 @@ class GameState extends State {
 
 	public static var STATE_KEY = "GameState";
 
-	private var mainContainer:Sprite;
 	private var backgroundImage:Bitmap;
 
-	private var dareMenuBtn:Sprite;
-	private var dareMenuBtnImage:Bitmap;
+	private var dareMenuBtn:Button;
 
 	private var phoneIcon:Bitmap;
 	private var spinAgain:Bitmap;
@@ -34,22 +33,15 @@ class GameState extends State {
 
 	override public function load():Void {
 
-		mainContainer = new Sprite();
-		addChild(mainContainer);
-
 		//Background image
 		backgroundImage = new Bitmap(Assets.getBitmapData("assets/gameState/background.png", true));
 		centerImageX(backgroundImage);
 		backgroundImage.y = 52;
 
 		//dareMenu button
-		//NOTE: dareMenuBtn is added to the main container
-		dareMenuBtn = new Sprite();
-		dareMenuBtnImage = new Bitmap(Assets.getBitmapData("assets/gameState/plus.png", true));
-		dareMenuBtn.addChild(dareMenuBtnImage);
-		dareMenuBtn.x = (Main.baseWidth - dareMenuBtn.width) / 2;
+		dareMenuBtn = new Button("assets/gameState/plus.png", onDareMenuClicked);
+		dareMenuBtn.x = (Main.stageWidth - dareMenuBtn.width) / 2;
 		dareMenuBtn.y = 700;
-		addChild(dareMenuBtn);
 
 		//Phone icon
 		phoneIcon = new Bitmap(Assets.getBitmapData("assets/gameState/phoneIcon.png", true));
@@ -72,19 +64,20 @@ class GameState extends State {
 		dareTextField.x = 90;
 		dareTextField.y = 155;
 
-		addChildrenToMainContainer();
+		addChildren();
 	}
 
-	private function addChildrenToMainContainer():Void {
-		mainContainer.addChild(backgroundImage);
-		mainContainer.addChild(phoneIcon);
-		mainContainer.addChild(spinAgain);
-		mainContainer.addChild(dareTextField);
+	private function addChildren():Void {
+		addChild(backgroundImage);
+		addChild(phoneIcon);
+		addChild(spinAgain);
+		addChild(dareMenuBtn);
+		addChild(dareTextField);
 	}
 
 	//Center the image on the stage
 	private function centerImageX(image:Bitmap):Void {
-		image.x = (Main.baseWidth - image.width) / 2;
+		image.x = (Main.stageWidth - image.width) / 2;
 	}
 
 	override public function onEnterStart():Void {
@@ -94,12 +87,10 @@ class GameState extends State {
 	}
 
 	override public function onEnterFinish():Void {
-		dareMenuBtn.addEventListener(MouseEvent.CLICK, onDareMenuClicked);
-		mainContainer.addEventListener(MouseEvent.CLICK, onMainClicked);
+		addEventListener(MouseEvent.CLICK, onMainClicked);
 	}
 
 	private function onDareMenuClicked(e:MouseEvent):Void {
-		dareMenuBtn.removeEventListener(MouseEvent.CLICK, onDareMenuClicked);
 		StateManager.getInstance().changeStateTransition(DareState.STATE_KEY, Transitions.SLIDE_PUSH_UP);
 	}
 
@@ -118,6 +109,6 @@ class GameState extends State {
 		phoneIcon.visible = true;
 		spinAgain.visible = false;
 		dareTextField.visible = false;
-		mainContainer.removeEventListener(MouseEvent.CLICK, onMainClicked);
+		removeEventListener(MouseEvent.CLICK, onMainClicked);
 	}
 }
