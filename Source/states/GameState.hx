@@ -47,14 +47,14 @@ class GameState extends State {
 		dareMenuBtn = new Sprite();
 		dareMenuBtnImage = new Bitmap(Assets.getBitmapData("assets/gameState/plus.png", true));
 		dareMenuBtn.addChild(dareMenuBtnImage);
-		dareMenuBtn.x = (Main.stageWidth / 2) - (dareMenuBtn.width / 2);
+		dareMenuBtn.x = (Main.baseWidth - dareMenuBtn.width) / 2;
 		dareMenuBtn.y = 700;
 		addChild(dareMenuBtn);
 
 		//Phone icon
 		phoneIcon = new Bitmap(Assets.getBitmapData("assets/gameState/phoneIcon.png", true));
 		centerImageX(phoneIcon);
-		phoneIcon.y = ((backgroundImage.height / 2) - (phoneIcon.height / 2)) + backgroundImage.y;
+		phoneIcon.y = ((backgroundImage.height - phoneIcon.height) / 2) + backgroundImage.y;
 
 		//Spin again text and border flourish
 		spinAgain = new Bitmap(Assets.getBitmapData("assets/gameState/spinAgain.png", true));
@@ -84,7 +84,7 @@ class GameState extends State {
 
 	//Center the image on the stage
 	private function centerImageX(image:Bitmap):Void {
-		image.x = (Main.stageWidth / 2) - (image.width / 2);
+		image.x = (Main.baseWidth - image.width) / 2;
 	}
 
 	override public function onEnterStart():Void {

@@ -28,7 +28,7 @@ class DareState extends State {
 		addChild(mainDareContainer);
 
 		dareBackgroundImage = new Bitmap(Assets.getBitmapData("assets/dareState/background.png", true));
-		dareBackgroundImage.x = (Main.stageWidth / 2) - (dareBackgroundImage.width / 2);
+		dareBackgroundImage.x = (Main.baseWidth - dareBackgroundImage.width) / 2;
 		dareBackgroundImage.y = 85;
 		mainDareContainer.addChild(dareBackgroundImage);
 
@@ -37,7 +37,7 @@ class DareState extends State {
 		dareMenuBtn = new Sprite();
 		dareMenuBtnImage = new Bitmap(Assets.getBitmapData("assets/gameState/plus.png", true));
 		dareMenuBtn.addChild(dareMenuBtnImage);
-		dareMenuBtn.x = (Main.stageWidth / 2) - (dareMenuBtn.width / 2);
+		dareMenuBtn.x = (Main.baseWidth - dareMenuBtn.width) / 2;
 		dareMenuBtn.y = 700;
 		addChild(dareMenuBtn);
 	}

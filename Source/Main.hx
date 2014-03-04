@@ -23,6 +23,9 @@ class Main extends Sprite {
 	public static var stageWidth:Int;
 	public static var stageHeight:Int;
 
+	public static var baseWidth:Int = 480;
+	public static var baseHeight:Int = 800;
+
 	private var backgroundImage:Bitmap;
 
 	public function new():Void {
@@ -31,6 +34,9 @@ class Main extends Sprite {
 
 		stageWidth = Lib.current.stage.stageWidth;
 		stageHeight = Lib.current.stage.stageHeight;
+
+		scaleX = (stageWidth / baseWidth);
+		scaleY = (stageHeight / baseHeight);
 
 		backgroundImage = new Bitmap(Assets.getBitmapData("assets/background.jpg", false));
 		addChild(backgroundImage);

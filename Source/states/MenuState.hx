@@ -32,8 +32,8 @@ class MenuState extends State {
 
 		menuImage = new Bitmap(Assets.getBitmapData("assets/mainMenu/label.png", true));
 		//Center the image on the stage
-		menuImage.x = (Main.stageWidth / 2) - (menuImage.width / 2);
-		menuImage.y = (Main.stageHeight / 2) - (menuImage.height / 2);
+		menuImage.x = (Main.baseWidth - menuImage.width) / 2;
+		menuImage.y = (Main.baseHeight - menuImage.height) / 2;
 
 		menuContainer.addChild(menuImage);
 	}
