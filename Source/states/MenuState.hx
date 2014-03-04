@@ -27,9 +27,13 @@ class MenuState extends State {
 	override public function load():Void {
 
 		menuImageBtn = new Button("assets/mainMenu/label.png", onMenuClicked);
+
+		menuImageBtn.setOriginX(menuImageBtn.width / 2);
+		menuImageBtn.setOriginY(menuImageBtn.height / 2);
+
 		//Center the image on the stage
-		menuImageBtn.x = (Main.stageWidth - menuImageBtn.width) / 2;
-		menuImageBtn.y = (Main.stageHeight - menuImageBtn.height) / 2;
+		menuImageBtn.x = Main.stageWidth / 2;
+		menuImageBtn.y = Main.stageHeight / 2;
 
 		addChild(menuImageBtn);
 	}
