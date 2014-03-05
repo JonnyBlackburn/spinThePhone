@@ -39,7 +39,6 @@ class StateManager extends Sprite {
 		states.set(name, state);
 
 		state.load();
-		state.setUp();
 	}
 
 	public function changeState(newStateKey:String):Void {
@@ -71,10 +70,10 @@ class StateManager extends Sprite {
 		var nextState:State = states.get(newStateKey);
 		var currentState:State = getCurrentState();
 
+		addChild(nextState);
+
 		nextState.onEnterStart();
 		currentState.onExitStart();
-
-		addChild(nextState);
 
 		var endTransition = function():Void {
 			changeState(newStateKey);

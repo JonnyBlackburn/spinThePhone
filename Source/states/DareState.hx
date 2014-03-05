@@ -38,7 +38,8 @@ class DareState extends State {
 		mouseChildren = false;
 	}
 
-	override public function onEnterFinish():Void {
+	override public function onEntered():Void {
+		dareMenuBtn.setUp();
 	}
 
 	private function onDareMenuBtnClicked(e:MouseEvent):Void {
@@ -47,5 +48,9 @@ class DareState extends State {
 
 	override public function update(dt:Int):Void {
 
+	}
+
+	override public function cleanUp():Void {
+		dareMenuBtn.cleanUp();
 	}
 }

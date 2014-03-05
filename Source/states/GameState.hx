@@ -86,8 +86,15 @@ class GameState extends State {
 		dareTextField.visible = false;
 	}
 
-	override public function onEnterFinish():Void {
+	override public function onEntered():Void {
+		dareMenuBtn.setUp();
 		addEventListener(MouseEvent.CLICK, onMainClicked);
+	}
+
+	override public function onExitFinish():Void {
+		phoneIcon.visible = true;
+		spinAgain.visible = false;
+		dareTextField.visible = false;
 	}
 
 	private function onDareMenuClicked(e:MouseEvent):Void {
@@ -106,9 +113,7 @@ class GameState extends State {
 	}
 
 	override public function cleanUp():Void {
-		phoneIcon.visible = true;
-		spinAgain.visible = false;
-		dareTextField.visible = false;
 		removeEventListener(MouseEvent.CLICK, onMainClicked);
+		dareMenuBtn.cleanUp();
 	}
 }

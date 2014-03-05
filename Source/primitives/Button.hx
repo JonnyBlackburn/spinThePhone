@@ -13,6 +13,27 @@ class Button extends Sprite {
 	private var _image:Bitmap;
 	private var _callback:Function;
 
+	@:isVar public var originX(get, set):Float;
+	@:isVar public var originY(get, set):Float;
+
+	private function set_originX(newOriginX:Float):Float {
+		_image.x -= newOriginX;
+		return newOriginX;
+	}
+
+	private function get_originX():Float {
+		return originX;
+	}
+
+	private function set_originY(newOriginY:Float):Float {
+		_image.y -= newOriginY;
+		return newOriginY;
+	}
+
+	private function get_originY():Float {
+		return originY;
+	}
+
     public function new(imageURL:String, callback:Function):Void {
 
 	    super();
@@ -22,28 +43,14 @@ class Button extends Sprite {
 
 	    _callback = callback;
 
-	    addEventListener(MouseEvent.CLICK, _callback);
+	    setUp();
     }
 
-	//TODO: Learn how to do getters and setters
-	public function setOriginX(newOriginX:Float):Void {
-		_image.x -= newOriginX;
-	}
-
-	public function getOriginX():Float {
-		return _image.x;
-	}
-
-	public function setOriginY(newOriginY:Float):Void {
-		_image.y -= newOriginY;
-	}
-
-	public function getOriginY():Float {
-		return _image.y;
+	public function setUp():Void {
+		addEventListener(MouseEvent.CLICK, _callback);
 	}
 
 	public function cleanUp():Void {
 		removeEventListener(MouseEvent.CLICK, _callback);
-		_callback = null;
 	}
 }

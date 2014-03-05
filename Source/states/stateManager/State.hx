@@ -14,9 +14,6 @@ class State extends Sprite {
 	public function load():Void {
 	}
 
-	public function setUp():Void {
-	}
-
 	//State has entered the scene
 	public function onEntered():Void {
 	}

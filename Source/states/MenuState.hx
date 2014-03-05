@@ -28,8 +28,8 @@ class MenuState extends State {
 
 		menuImageBtn = new Button("assets/mainMenu/label.png", onMenuClicked);
 
-		menuImageBtn.setOriginX(menuImageBtn.width / 2);
-		menuImageBtn.setOriginY(menuImageBtn.height / 2);
+		menuImageBtn.originX = menuImageBtn.width / 2;
+		menuImageBtn.originY = menuImageBtn.height / 2;
 
 		//Center the image on the stage
 		menuImageBtn.x = Main.stageWidth / 2;
@@ -39,6 +39,7 @@ class MenuState extends State {
 	}
 
 	override public function onEntered():Void {
+		menuImageBtn.setUp();
 	}
 
 	private function onMenuClicked(e:MouseEvent):Void {
@@ -50,5 +51,6 @@ class MenuState extends State {
 	}
 
 	override public function cleanUp():Void {
+		menuImageBtn.cleanUp();
 	}
 }
