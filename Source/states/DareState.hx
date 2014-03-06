@@ -1,5 +1,8 @@
 package states;
 
+import dares.Dare;
+import Array;
+import dares.DareManager;
 import primitives.Button;
 import states.stateManager.StateManager;
 import states.stateManager.transitions.TransitionHelper.Transitions;
@@ -14,8 +17,10 @@ class DareState extends State {
 	public static var STATE_KEY = "DareState";
 
 	private var dareBackgroundImage:Bitmap;
-
 	private var dareMenuBtn:Button;
+	private var jonnyDare:Array<Dare>;
+
+	private var dareManager:DareManager;
 
     public function new() {
 	    super();
@@ -35,11 +40,19 @@ class DareState extends State {
 		dareMenuBtn.y = 700;
 		addChild(dareMenuBtn);
 
-		mouseChildren = false;
+		dareManager = DareManager.getInstance();
+		dareManager.createDare("Jonny is Awesome!");
+		dareManager.createDare("Jonny isn't Awesome!");
 	}
 
 	override public function onEntered():Void {
 		dareMenuBtn.setUp();
+		jonnyDare = dareManager.getDares();
+
+		trace(jonnyDare.length);
+		for(i in 0...jonnyDare.length) {
+			trace(jonnyDare[i].dareText);
+		}
 	}
 
 	private function onDareMenuBtnClicked(e:MouseEvent):Void {
