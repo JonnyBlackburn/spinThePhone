@@ -41,8 +41,10 @@ class DareState extends State {
 		addChild(dareMenuBtn);
 
 		dareManager = DareManager.getInstance();
-		dareManager.createDare("Jonny is Awesome!");
-		dareManager.createDare("Jonny isn't Awesome!");
+		dareManager.loadDares();
+		//dareManager.createDare("Jonny is Awesome!");
+		//dareManager.createDare("Jonny isn't Awesome!");
+		//dareManager.saveDares();
 	}
 
 	override public function onEntered():Void {

@@ -36,7 +36,7 @@ class DareManager {
 		#end
 
 		try {
-			sharedObject.data.dares = Json.stringify(dareObject);
+			sharedObject.data.dares = Json.stringify(dareObject.dareArray);
 			flushStatus = sharedObject.flush();
 		}
 		catch(e:Dynamic) {
@@ -55,7 +55,10 @@ class DareManager {
 	}
 
 	public function loadDares():Void {
-		dareObject = Json.parse(sharedObject.data.dares);
+		dareObject.dareArray = Json.parse(sharedObject.data.dares);
+
+		trace(dareObject.dareArray.length);
+		trace(dareObject.dareArray[0]);
 	}
 
 	public function createDare(text:String):Void {
